@@ -1,29 +1,26 @@
 package com.ada.roomms.model;
 
 import com.ada.roomms.enumeration.RoomTipos;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+
 import java.util.UUID;
 
-@Entity
+
 @Data
-@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Room {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
-    @Column(nullable = false, unique = true)
-    @Size(max = 12)
+    private Long id;
     private String nome;
-    @Column(nullable = false, unique = false)
-    @Size(max = 12)
     private Integer coluna;
-    @Column (nullable = false,unique = false)
-    @Size(max = 12)
     private Integer fileira;
+    @Column("tipoDeSala")
     private RoomTipos tipoDeSala;
 }
